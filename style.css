@@ -1,0 +1,14 @@
+/*set font!*/
+font-family: 'JetBrains Mono', monospace;
+
+/*Center Content: all of it!*/
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+
+/*Set background color: black and text color: white*/
+body {
+    background-color: black; /*this is for the whole page body*/
+    color: white;
+}
