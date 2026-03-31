@@ -36,6 +36,7 @@ color: white;
 }
 
 .weather {
+    margin-top: 1.5rem;
     font-size: 2rem;
     opacity: 0.8 
 }
@@ -52,3 +53,15 @@ header {
     opacity: 0.8;
 }
 
+.shortcuts {
+    display: flex;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.shortcuts a {
+    color: white;
+    font-size: 1.5rem;
+    opacity: 0.8;
+    text-decoration: none;
+}
