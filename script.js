@@ -46,3 +46,4 @@ async function fetchweather() {
 }
 
 fetchweather()
+setInterval(fetchweather,90000) // updates once every 15 mins :) 
