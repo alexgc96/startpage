@@ -89,6 +89,16 @@ color: white;
     font-size: 3rem;
     opacity: 0.8;
 }
+.weather-link {
+  text-decoration: none;
+  color: inherit;
+  display: block; /* Ensures the link covers the full width/height of the div */
+   transition: transform 0.3s ease-in-out; /* Animation */
+}
+
+.weather-link:hover {
+transform: scale(1.1); /* Grows to 110% of its original size */
+}
 
 .weather {
     margin-top: 1.5rem;
