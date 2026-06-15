@@ -2,12 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Startpage</title> 
+    <title>Startpage</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
 
 </head>
 <body>
+
+<!-- Notes panel (left) — toggle with [ -->
+<div class="side-panel notes-panel" id="notesPanel">
+    <div class="panel-header">// notes</div>
+    <div class="note-input-area">
+        <textarea id="noteInput" placeholder="write something..." rows="3"></textarea>
+        <button id="saveNote">save</button>
+    </div>
+    <div class="notes-list" id="notesList"></div>
+</div>
+
+<!-- Tasks panel (right) — toggle with ] -->
+<div class="side-panel tasks-panel" id="tasksPanel">
+    <div class="panel-header">// tasks</div>
+    <div class="task-input-area">
+        <input type="text" id="taskInput" placeholder="add task..." autocomplete="off" spellcheck="false" />
+        <input type="date" id="taskDue" />
+        <button id="addTask">add</button>
+    </div>
+    <div class="tasks-list" id="tasksList"></div>
+</div>
+
+<!-- Search overlay — any printable key (except [ ]) -->
+<div class="search-overlay" id="searchOverlay">
+    <span class="search-prompt">&gt;&nbsp;</span>
+    <input type="text" class="search-input" id="searchInput" autocomplete="off" spellcheck="false" />
+</div>
 
 <header class="cursor header">
     <a href="https://blenderartists.org/u/alexgc96/summary" target="_blank">Howdy Alex.</a>
@@ -18,7 +45,7 @@
         <span class="time">xx:xx</span>
         <span class="ampm">AM</span>
     </div>
-    
+
     <div class="date">Tue 31 mar</div>
 
     <a class="weather-link" href="https://weather.com/weather/today/l/f892fcc57d89c40589a3d92f0249159d86b112424bdb14837d50500ff4456949" target="_blank">
@@ -46,4 +73,3 @@
 
     </body>
 </html>
-
