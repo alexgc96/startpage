@@ -34,8 +34,26 @@ function updateClock(){
 updateClock()
 setInterval(updateClock, 1000)
 
+let cachedLocation = null
+
+async function getLocation() {
+    if (cachedLocation) return cachedLocation
+    try {
+        const r = await fetch('https://ipapi.co/json/')
+        const d = await r.json()
+        if (d.latitude && d.longitude) {
+            cachedLocation = { lat: d.latitude, lon: d.longitude }
+            return cachedLocation
+        }
+    } catch {}
+    // fallback coords
+    cachedLocation = { lat: 32.6249, lon: -115.4436 }
+    return cachedLocation
+}
+
 async function fetchweather() {
-    const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=32.6249&longitude=-115.4436&current_weather=true&temperature_unit=fahrenheit')
+    const { lat, lon } = await getLocation()
+    const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&temperature_unit=fahrenheit`)
     const data = await response.json()
     const weatherSymbol = data.current_weather.weathercode
     const weatherTemp = data.current_weather.temperature
@@ -48,13 +66,14 @@ setInterval(fetchweather, 90000)
 
 const searchOverlay = document.getElementById('searchOverlay')
 const searchInput = document.getElementById('searchInput')
+const searchBackdrop = document.getElementById('searchBackdrop')
 
 function openSearch(firstChar) {
     searchOverlay.classList.add('active')
+    searchBackdrop.classList.add('active')
     searchInput.value = firstChar || ''
     searchInput.focus()
     if (firstChar) {
-        // place caret at end
         const len = searchInput.value.length
         searchInput.setSelectionRange(len, len)
     }
@@ -62,8 +81,11 @@ function openSearch(firstChar) {
 
 function closeSearch() {
     searchOverlay.classList.remove('active')
+    searchBackdrop.classList.remove('active')
     searchInput.value = ''
 }
+
+searchBackdrop.addEventListener('click', closeSearch)
 
 function submitSearch() {
     const q = searchInput.value.trim()
