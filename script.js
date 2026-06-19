@@ -99,6 +99,7 @@ const notesPanel = document.getElementById('notesPanel')
 const noteInput = document.getElementById('noteInput')
 const notesList = document.getElementById('notesList')
 const saveNoteBtn = document.getElementById('saveNote')
+const noteFilter = document.getElementById('noteFilter')
 
 function loadNotes() {
     return JSON.parse(localStorage.getItem('startpage_notes') || '[]')
@@ -125,6 +126,7 @@ function renderNotes() {
     notes.forEach(n => {
         const item = document.createElement('div')
         item.className = 'note-item'
+        item.dataset.noteContent = n.content.toLowerCase()
 
         const dateEl = document.createElement('div')
         dateEl.className = 'note-date'
@@ -143,6 +145,18 @@ function renderNotes() {
         item.appendChild(contentEl)
         item.appendChild(delBtn)
         notesList.appendChild(item)
+    })
+}
+
+function applyNoteFilter() {
+    const query = noteFilter.value.toLowerCase()
+    const items = notesList.querySelectorAll('.note-item')
+    items.forEach(item => {
+        if (query === '' || item.dataset.noteContent.includes(query)) {
+            item.style.display = ''
+        } else {
+            item.style.display = 'none'
+        }
     })
 }
 
@@ -166,6 +180,7 @@ saveNoteBtn.addEventListener('click', addNote)
 noteInput.addEventListener('keydown', e => {
     if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) addNote()
 })
+noteFilter.addEventListener('input', applyNoteFilter)
 
 renderNotes()
 
@@ -266,6 +281,8 @@ document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
         if (searchActive) { closeSearch(); return }
         notesPanel.classList.remove('open')
+        noteFilter.value = ''
+        applyNoteFilter()
         tasksPanel.classList.remove('open')
         return
     }
@@ -276,6 +293,10 @@ document.addEventListener('keydown', e => {
     if (e.key === '[' && !searchActive) {
         e.preventDefault()
         notesPanel.classList.toggle('open')
+        if (!notesPanel.classList.contains('open')) {
+            noteFilter.value = ''
+            applyNoteFilter()
+        }
         return
     }
 

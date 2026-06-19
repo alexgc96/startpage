@@ -299,8 +299,29 @@ margin: 0;
 }
 
 .note-input-area textarea::placeholder,
+.note-filter-area input::placeholder,
 .task-input-area input::placeholder {
     color: rgba(255,255,255,0.3);
+}
+
+/* Note filter */
+
+.note-filter-area {
+    display: flex;
+}
+
+.note-filter-area input {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: white;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    padding: 0.4rem 0.5rem;
+    outline: none;
+    caret-color: white;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Task input */
