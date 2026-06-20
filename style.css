@@ -1,3 +1,21 @@
+:root {
+	--bg: #000000;
+	--text: #ffffff;
+	--accent: #ffffff;
+}
+
+body[data-theme='everforest'] {
+	--bg: #2d353b;
+	--text: #d3c6aa;
+	--accent: #a7c080;
+}
+
+body[data-theme='gruvbox'] {
+	--bg: #282828;
+	--text: #ebdbb2;
+	--accent: #fabd2f;
+}
+
 body {
 font-family: 'JetBrains Mono', monospace;
 
@@ -8,8 +26,8 @@ justify-content: center;
 min-height: 100vh;
 position: relative;
 
-background-color: black;
-color: white;
+background-color: var(--bg);
+color: var(--text);
 margin: 0;
 }
 
@@ -18,7 +36,7 @@ margin: 0;
 }
 
 .header a{
-    color:white;
+    color: var(--text);
     text-decoration:none;
 }
 
@@ -43,7 +61,7 @@ margin: 0;
 
 .header:hover {
     transform: scale(1.1);
-    text-shadow: 0 0 10px rgba(255,255,255,0.65);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.65);
 }
 
 @keyframes typing {
@@ -71,7 +89,7 @@ margin: 0;
     font-size: 8rem;
     font-weight: bold;
     opacity: 0.8;
-    border: solid rgba(255,255,255,.8);
+    border: solid rgba(255, 255, 255, 0.8);
     border-radius: 30px;
     padding: .7rem;
 
@@ -97,7 +115,7 @@ margin: 0;
 
 .weather-link:hover {
     transform: scale(1.1);
-    text-shadow: 0 0 10px rgba(255,255,255,0.65);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.65);
 }
 
 .weather {
@@ -120,7 +138,7 @@ margin: 0;
 }
 
 .shortcuts a {
-    color: white;
+    color: var(--text);
     font-size: 1.5rem;
     opacity: 0.8;
     text-decoration: none;
@@ -130,7 +148,7 @@ margin: 0;
 
 .shortcuts a:hover {
   transform: scale(1.2);
-  text-shadow: 0 0 10px rgba(255,255,255,0.65);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.65);
 }
 
 .shortcuts2 {
@@ -142,7 +160,7 @@ margin: 0;
 }
 
 .shortcuts2 a {
-    color: white;
+    color: var(--text);
     font-size: 1.5rem;
     opacity: 0.8;
     text-decoration: none;
@@ -152,7 +170,7 @@ margin: 0;
 
 .shortcuts2 a:hover {
   transform: scale(1.2);
-  text-shadow: 0 0 10px rgba(255,255,255,0.65);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.65);
 }
 
 .footer {
@@ -213,7 +231,7 @@ margin: 0;
 .search-prompt {
     font-family: 'JetBrains Mono', monospace;
     font-size: 2.5rem;
-    color: white;
+    color: var(--text);
     opacity: 0.8;
     white-space: pre;
 }
@@ -221,13 +239,13 @@ margin: 0;
 .search-input {
     font-family: 'JetBrains Mono', monospace;
     font-size: 2.5rem;
-    color: white;
+    color: var(--text);
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     outline: none;
     min-width: 16ch;
-    caret-color: white;
+    caret-color: var(--text);
 }
 
 /* ─── Side panels ─── */
@@ -237,7 +255,7 @@ margin: 0;
     top: 0;
     height: 100vh;
     width: 320px;
-    background: black;
+    background: var(--bg);
     padding: 2rem 1.5rem;
     box-sizing: border-box;
     overflow-y: auto;
@@ -287,14 +305,14 @@ margin: 0;
 .note-input-area textarea {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.9rem;
-    color: white;
+    color: var(--text);
     background: transparent;
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 4px;
     padding: 0.5rem;
     resize: vertical;
     outline: none;
-    caret-color: white;
+    caret-color: var(--text);
     line-height: 1.5;
 }
 
@@ -313,13 +331,13 @@ margin: 0;
 .note-filter-area input {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.9rem;
-    color: white;
+    color: var(--text);
     background: transparent;
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 4px;
     padding: 0.4rem 0.5rem;
     outline: none;
-    caret-color: white;
+    caret-color: var(--text);
     width: 100%;
     box-sizing: border-box;
 }
@@ -336,13 +354,13 @@ margin: 0;
 .task-input-area input[type="date"] {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.9rem;
-    color: white;
+    color: var(--text);
     background: transparent;
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 4px;
     padding: 0.4rem 0.5rem;
     outline: none;
-    caret-color: white;
+    caret-color: var(--text);
     width: 100%;
     box-sizing: border-box;
 }
@@ -358,9 +376,9 @@ margin: 0;
 .side-panel button {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.85rem;
-    color: white;
+    color: var(--text);
     background: transparent;
-    border: 1px solid rgba(255,255,255,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 4px;
     padding: 0.35rem 0.8rem;
     cursor: pointer;
@@ -409,7 +427,7 @@ margin: 0;
     transition: opacity 0.2s;
     background: none;
     border: none;
-    color: white;
+    color: var(--text);
     padding: 0;
     font-family: 'JetBrains Mono', monospace;
 }
@@ -469,7 +487,7 @@ margin: 0;
     transition: opacity 0.2s;
     background: none;
     border: none;
-    color: white;
+    color: var(--text);
     padding: 0;
     font-family: 'JetBrains Mono', monospace;
     flex-shrink: 0;

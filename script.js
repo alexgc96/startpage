@@ -16,6 +16,36 @@ const weatherDescriptions = {
     95: '⛈️ Thunderstorm'
 }
 
+// ─── Theme management ─────────────────────────────────────────────────────
+const THEMES = ['default', 'everforest', 'gruvbox']
+
+function loadTheme() {
+    return localStorage.getItem('startpage_theme') || 'default'
+}
+
+function saveTheme(theme) {
+    localStorage.setItem('startpage_theme', theme)
+}
+
+function applyTheme(theme) {
+    if (theme === 'default') {
+        document.body.removeAttribute('data-theme')
+    } else {
+        document.body.setAttribute('data-theme', theme)
+    }
+}
+
+function cycleTheme() {
+    const currentTheme = loadTheme()
+    const currentIndex = THEMES.indexOf(currentTheme)
+    const nextIndex = (currentIndex + 1) % THEMES.length
+    const nextTheme = THEMES[nextIndex]
+    applyTheme(nextTheme)
+    saveTheme(nextTheme)
+}
+
+applyTheme(loadTheme())
+
 function updateClock(){
     const now = new Date()
     const minutes = String(now.getMinutes()).padStart(2, '0')
@@ -271,7 +301,7 @@ taskInput.addEventListener('keydown', e => { if (e.key === 'Enter') addTask() })
 renderTasks()
 
 // ─── Global keyboard routing ──────────────────────────────────────────────────
-// [ → toggle notes   ] → toggle tasks   Esc → close all   any printable → search
+// [ → toggle notes   ] → toggle tasks   t → cycle themes   Esc → close all   any printable → search
 
 document.addEventListener('keydown', e => {
     const searchActive = searchOverlay.classList.contains('active')
@@ -303,6 +333,12 @@ document.addEventListener('keydown', e => {
     if (e.key === ']' && !searchActive) {
         e.preventDefault()
         tasksPanel.classList.toggle('open')
+        return
+    }
+
+    if (e.key === 't' && !searchActive) {
+        e.preventDefault()
+        cycleTheme()
         return
     }
 
