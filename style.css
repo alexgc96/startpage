@@ -144,11 +144,21 @@ margin: 0;
     text-decoration: none;
     max-width: 8rem;
     transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .shortcuts a:hover {
   transform: scale(1.2);
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.65);
+}
+
+.shortcuts a .icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--text);
+    display: block;
 }
 
 .shortcuts2 {
@@ -166,11 +176,21 @@ margin: 0;
     text-decoration: none;
     max-width: 8rem;
     transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .shortcuts2 a:hover {
   transform: scale(1.2);
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.65);
+}
+
+.shortcuts2 a .icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--text);
+    display: block;
 }
 
 .footer {
