@@ -63,15 +63,65 @@
         <script src="script.js"></script>
 
 <div class="shortcuts">
-    <a href="notion://" target="_blank">Notion</a>
-    <a href="iterm2://" target="_blank">Terminal</a>
-    <a href="vscode://" target="_blank">VScode</a>
+    <a href="notion://" target="_blank" title="Notion">
+        <svg viewBox="0 0 100 100" class="icon"><use href="#notion-logo"/></svg>
+    </a>
+    <a href="iterm2://" target="_blank" title="Terminal">
+        <svg viewBox="0 0 100 100" class="icon"><use href="#terminal-logo"/></svg>
+    </a>
+    <a href="vscode://" target="_blank" title="VScode">
+        <svg viewBox="0 0 100 100" class="icon"><use href="#vscode-logo"/></svg>
+    </a>
 </div>
 <div class="shortcuts2">
-    <a href="https://github.com" target="_blank">Github</a>
-    <a href="https://www.blogger.com" target="_blank">Blogger</a>
-    <a href="https://www.youtube.com" target="_blank">Youtube</a>
+    <a href="https://github.com" target="_blank" title="Github">
+        <svg viewBox="0 0 100 100" class="icon"><use href="#github-logo"/></svg>
+    </a>
+    <a href="https://www.blogger.com" target="_blank" title="Blogger">
+        <svg viewBox="0 0 100 100" class="icon"><use href="#blogger-logo"/></svg>
+    </a>
+    <a href="https://www.youtube.com" target="_blank" title="Youtube">
+        <svg viewBox="0 0 100 100" class="icon"><use href="#youtube-logo"/></svg>
+    </a>
 </div>
+
+<!-- SVG logo definitions -->
+<svg style="display: none;">
+    <defs>
+        <!-- Notion logo: stylized N -->
+        <symbol id="notion-logo" viewBox="0 0 100 100">
+            <path d="M20 20 L60 80 M40 20 L80 80" stroke="currentColor" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+        <!-- Terminal logo: > prompt -->
+        <symbol id="terminal-logo" viewBox="0 0 100 100">
+            <rect x="10" y="15" width="80" height="70" fill="none" stroke="currentColor" stroke-width="3" rx="3"/>
+            <path d="M25 45 L40 60 L55 45" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="60" y1="50" x2="75" y2="50" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        </symbol>
+        <!-- VScode logo: code brackets -->
+        <symbol id="vscode-logo" viewBox="0 0 100 100">
+            <path d="M30 30 L15 50 L30 70" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M70 30 L85 50 L70 70" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="45" y1="25" x2="55" y2="75" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        </symbol>
+        <!-- Github logo: octocat simplified -->
+        <symbol id="github-logo" viewBox="0 0 100 100">
+            <circle cx="50" cy="35" r="15" fill="none" stroke="currentColor" stroke-width="3"/>
+            <path d="M35 50 Q35 65 50 72 Q65 65 65 50 L65 55 Q65 68 50 75 Q35 68 35 55 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+            <circle cx="40" cy="55" r="3" fill="currentColor"/>
+            <circle cx="60" cy="55" r="3" fill="currentColor"/>
+        </symbol>
+        <!-- Blogger logo: B -->
+        <symbol id="blogger-logo" viewBox="0 0 100 100">
+            <text x="50" y="70" font-size="60" font-weight="bold" text-anchor="middle" fill="none" stroke="currentColor" stroke-width="2">B</text>
+        </symbol>
+        <!-- Youtube logo: play button -->
+        <symbol id="youtube-logo" viewBox="0 0 100 100">
+            <rect x="15" y="25" width="70" height="50" rx="5" fill="none" stroke="currentColor" stroke-width="3"/>
+            <path d="M40 40 L40 60 L65 50 Z" fill="currentColor"/>
+        </symbol>
+    </defs>
+</svg>
 
 <footer class="footer">
     <span>©</span><span>2</span><span>0</span><span>2</span><span>6</span><span>&nbsp;</span><span>A</span><span>n</span><span>a</span><span>l</span><span>o</span><span>g</span><span>T</span><span>r</span><span>s</span><span>h</span><span>&nbsp;</span><span>S</span><span>t</span><span>u</span><span>d</span><span>i</span><span>o</span><span>:</span><span>&nbsp;</span><span>I</span><span>n</span><span>t</span><span>e</span><span>r</span><span>n</span><span>a</span><span>l</span><span>&nbsp;</span><span>N</span><span>e</span><span>t</span><span>w</span><span>o</span><span>r</span><span>k</span>
