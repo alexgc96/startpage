@@ -300,16 +300,35 @@ taskInput.addEventListener('keydown', e => { if (e.key === 'Enter') addTask() })
 
 renderTasks()
 
+// ─── Help modal ───────────────────────────────────────────────────────────────
+
+const helpBackdrop = document.getElementById('helpBackdrop')
+const helpModal = document.getElementById('helpModal')
+
+function openHelp() {
+    helpModal.classList.add('active')
+    helpBackdrop.classList.add('active')
+}
+
+function closeHelp() {
+    helpModal.classList.remove('active')
+    helpBackdrop.classList.remove('active')
+}
+
+helpBackdrop.addEventListener('click', closeHelp)
+
 // ─── Global keyboard routing ──────────────────────────────────────────────────
-// [ → toggle notes   ] → toggle tasks   t → cycle themes   Esc → close all   any printable → search
+// [ → toggle notes   ] → toggle tasks   t → cycle themes   ? → toggle help   Esc → close all   any printable → search
 
 document.addEventListener('keydown', e => {
     const searchActive = searchOverlay.classList.contains('active')
+    const helpActive = helpModal.classList.contains('active')
     const notesFocused = notesPanel.contains(document.activeElement)
     const tasksFocused = tasksPanel.contains(document.activeElement)
 
     if (e.key === 'Escape') {
         if (searchActive) { closeSearch(); return }
+        if (helpActive) { closeHelp(); return }
         notesPanel.classList.remove('open')
         noteFilter.value = ''
         applyNoteFilter()
@@ -320,7 +339,7 @@ document.addEventListener('keydown', e => {
     // Don't intercept when typing inside a panel
     if (notesFocused || tasksFocused) return
 
-    if (e.key === '[' && !searchActive) {
+    if (e.key === '[' && !searchActive && !helpActive) {
         e.preventDefault()
         notesPanel.classList.toggle('open')
         if (!notesPanel.classList.contains('open')) {
@@ -330,15 +349,21 @@ document.addEventListener('keydown', e => {
         return
     }
 
-    if (e.key === ']' && !searchActive) {
+    if (e.key === ']' && !searchActive && !helpActive) {
         e.preventDefault()
         tasksPanel.classList.toggle('open')
         return
     }
 
-    if (e.key === 't' && !searchActive) {
+    if (e.key === 't' && !searchActive && !helpActive) {
         e.preventDefault()
         cycleTheme()
+        return
+    }
+
+    if (e.key === '?' && !searchActive && !helpActive) {
+        e.preventDefault()
+        openHelp()
         return
     }
 
@@ -347,8 +372,8 @@ document.addEventListener('keydown', e => {
         return
     }
 
-    // open search on any single printable char (not modifier combos)
-    if (!searchActive && e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+    // open search on any single printable char (not modifier combos, not ?)
+    if (!searchActive && !helpActive && e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey && e.key !== '?') {
         e.preventDefault()
         openSearch(e.key)
     }
