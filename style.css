@@ -268,6 +268,88 @@ margin: 0;
     caret-color: var(--text);
 }
 
+/* ─── Help modal backdrop ─── */
+
+.help-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.78);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 299;
+}
+
+.help-backdrop.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* ─── Help modal ─── */
+
+.help-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    padding: 2rem;
+    max-height: 80vh;
+    overflow-y: auto;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 300;
+}
+
+.help-modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.help-header {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    color: var(--text);
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+}
+
+.help-table {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text);
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.help-table tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.help-table tr:last-child {
+    border-bottom: none;
+}
+
+.help-key {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    padding: 0.6rem 1rem 0.6rem 0;
+    text-align: left;
+    color: var(--accent);
+}
+
+.help-action {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    padding: 0.6rem 0;
+    text-align: left;
+}
+
 /* ─── Side panels ─── */
 
 .side-panel {
