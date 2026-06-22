@@ -325,6 +325,7 @@ document.addEventListener('keydown', e => {
     const helpActive = helpModal.classList.contains('active')
     const notesFocused = notesPanel.contains(document.activeElement)
     const tasksFocused = tasksPanel.contains(document.activeElement)
+    const typing = notesFocused || tasksFocused || searchActive || helpActive
 
     if (e.key === 'Escape') {
         if (searchActive) { closeSearch(); return }
@@ -336,10 +337,16 @@ document.addEventListener('keydown', e => {
         return
     }
 
-    // Don't intercept when typing inside a panel
-    if (notesFocused || tasksFocused) return
+    if (e.key === '?' && !searchActive && !notesFocused && !tasksFocused) {
+        e.preventDefault()
+        helpActive ? closeHelp() : openHelp()
+        return
+    }
 
-    if (e.key === '[' && !searchActive && !helpActive) {
+    // Don't intercept when typing inside a panel, search, or help is open
+    if (typing) return
+
+    if (e.key === '[') {
         e.preventDefault()
         notesPanel.classList.toggle('open')
         if (!notesPanel.classList.contains('open')) {
@@ -349,21 +356,15 @@ document.addEventListener('keydown', e => {
         return
     }
 
-    if (e.key === ']' && !searchActive && !helpActive) {
+    if (e.key === ']') {
         e.preventDefault()
         tasksPanel.classList.toggle('open')
         return
     }
 
-    if (e.key === 't' && !searchActive && !helpActive) {
+    if (e.key === 't') {
         e.preventDefault()
         cycleTheme()
-        return
-    }
-
-    if (e.key === '?' && !searchActive && !helpActive) {
-        e.preventDefault()
-        openHelp()
         return
     }
 
@@ -373,7 +374,7 @@ document.addEventListener('keydown', e => {
     }
 
     // open search on any single printable char (not modifier combos, not ?)
-    if (!searchActive && !helpActive && e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey && e.key !== '?') {
+    if (e.key.length === 1 && e.key !== '?' && !e.ctrlKey && !e.metaKey && !e.altKey) {
         e.preventDefault()
         openSearch(e.key)
     }
