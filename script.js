@@ -119,7 +119,7 @@ searchBackdrop.addEventListener('click', closeSearch)
 
 function submitSearch() {
     const q = searchInput.value.trim()
-    if (q) window.open('https://www.google.com/search?q=' + encodeURIComponent(q), '_blank')
+    if (q) window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(q)
     closeSearch()
 }
 
@@ -327,6 +327,11 @@ document.addEventListener('keydown', e => {
     const tasksFocused = tasksPanel.contains(document.activeElement)
     const typing = notesFocused || tasksFocused || searchActive || helpActive
 
+    if (e.key === 'Enter' && searchActive) {
+        submitSearch()
+        return
+    }
+
     if (e.key === 'Escape') {
         if (searchActive) { closeSearch(); return }
         if (helpActive) { closeHelp(); return }
@@ -365,11 +370,6 @@ document.addEventListener('keydown', e => {
     if (e.key === 't') {
         e.preventDefault()
         cycleTheme()
-        return
-    }
-
-    if (e.key === 'Enter' && searchActive) {
-        submitSearch()
         return
     }
 
