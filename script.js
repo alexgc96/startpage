@@ -87,7 +87,30 @@ async function fetchweather() {
     const data = await response.json()
     const weatherSymbol = data.current_weather.weathercode
     const weatherTemp = data.current_weather.temperature
-    weatherDiv.textContent = weatherDescriptions[weatherSymbol] + "  " + Math.round(weatherTemp) + '°F'
+    const windSpeed = data.current_weather.windspeed || 0
+
+    let text = weatherDescriptions[weatherSymbol] + "  " + Math.round(weatherTemp) + '°F'
+    let isExtreme = false
+
+    // Check for extreme conditions
+    if (weatherSymbol >= 95 && weatherSymbol <= 99) {
+        text = '⚡ ' + text
+        isExtreme = true
+    }
+    if (weatherTemp > 40) {
+        isExtreme = true
+    }
+    if (windSpeed > 50) {
+        text = text + ' (gusts)'
+        isExtreme = true
+    }
+
+    weatherDiv.textContent = text
+    if (isExtreme) {
+        weatherDiv.classList.add('weather-extreme')
+    } else {
+        weatherDiv.classList.remove('weather-extreme')
+    }
 }
 fetchweather()
 setInterval(fetchweather, 90000)

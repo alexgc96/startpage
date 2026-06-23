@@ -124,6 +124,11 @@ margin: 0;
     opacity: 0.8;
 }
 
+.weather-extreme {
+    color: #ff6b6b;
+    text-shadow: 0 0 8px rgba(255, 107, 107, 0.4);
+}
+
 .ampm {
     font-size: 2rem;
     opacity: 0.9;
