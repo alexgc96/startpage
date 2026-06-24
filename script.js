@@ -97,7 +97,7 @@ async function fetchweather() {
         text = '⚡ ' + text
         isExtreme = true
     }
-    if (weatherTemp > 40) {
+    if (weatherTemp > 100 || weatherTemp < 20) {
         isExtreme = true
     }
     if (windSpeed > 50) {
